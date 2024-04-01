@@ -21,8 +21,15 @@
 
   <body>
     <div class="w-100">
+      <div class="d-flex">
+        {% include "layouts/sidebar.html" %}
+        <div class="w-100">
+            {% include "layouts/header.html" %}
       {% block content %}
       {% endblock content %}
+        </div>
+      </div>  
+    </div>
   </body>
   
 
