@@ -1,16 +1,20 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from random import randint
+from api.models import TotalViewsModel
 
 
 # Create your views here.
 def total_views(request):
-    return JsonResponse(
-        {
-            "labels": ["January", "February", "March", "April", "May", "June", "July"],
-            "data": [randint(1, 10000) for _ in range(7)],
-        }
-    )
+    queryset = TotalViewsModel.objects.all()
+    dict = {
+        "labels": [],
+        "data": [],
+    }
+    for item in queryset:
+        dict["labels"].append(item.labels)
+        dict["data"].append(item.data)
+    return JsonResponse(dict)
 
 
 def sub_views(request):
