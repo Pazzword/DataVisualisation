@@ -6,52 +6,64 @@ const trafficSources = document.getElementById('traffic-sources');
 
 
 // Total Views Doughnut Chart//
-new Chart(totalViewsChart, {
-    type: 'polarArea',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-            label: 'Total Views',
-            data: [35354, 32459, 43180, 52181, 33216, 12355],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',  // Red
-                'rgba(54, 162, 235, 0.6)',  // Blue
-                'rgba(255, 206, 86, 0.6)',  // Yellow
-                'rgba(75, 192, 192, 0.6)',  // Green
-                'rgba(153, 102, 255, 0.6)', // Purple
-                'rgba(255, 159, 64, 0.6)'   // Orange
-            ],            borderColor: 'rgba(0, 123, 255, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+fetch('/api/sub-views')
+    .then(response => response.json())
+    .then(data => {
+        new Chart(totalViewsChart, {
+            type: 'polarArea',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: data.labels,
+                    data: data.data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',  // Red
+                        'rgba(54, 162, 235, 0.6)',  // Blue
+                        'rgba(255, 206, 86, 0.6)',  // Yellow
+                        'rgba(75, 192, 192, 0.6)',  // Green
+                        'rgba(153, 102, 255, 0.6)', // Purple
+                        'rgba(255, 159, 64, 0.6)'   // Orange
+                    ],            
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        }
-    }
-});
+        });
+    });
+
 
 // Revenue Radar Chart//
-new Chart(revenueChart, {
-    type: 'radar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-            label: 'Total Revenue',
-            data: [65, 59, 80, 81, 56, 55],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+fetch('/api/revenue-views')
+    .then(response => response.json())
+    .then(data => {
+        new Chart(revenueChart, {
+            type: 'radar',
+            data: {
+                labels: ['January', 'February', 'March'],
+                datasets: [{
+                    label: data.labels,
+                    data: data.data,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        }
-    }
-});
+        });
+
+    });
+
 
 // Growth Doughnut Chart//
 new Chart(growthChart, {
@@ -73,25 +85,35 @@ new Chart(growthChart, {
     }
 });
 
+
 // Subscribers Count Line Chart//
-new Chart(subscriberCountChart, {
-    type: 'line',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-            label: 'Growth Revenue',
-            data: [65, 59, 80, 81, 56, 55],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+fetch('/api/total-views')
+    .then(response => response.json())
+    .then(data => {
+        new Chart(subscriberCountChart, {
+            type: 'line',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Growth Revenue',
+                    data: data.data,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        }
+        });
+
     }
-});
+    );
+
+
+
 
 // Traffic Sources Pie Chart//
 new Chart(trafficSources, {
@@ -101,9 +123,16 @@ new Chart(trafficSources, {
         datasets: [{
             label: 'Total Views',
             data: [65, 59, 80, 81, 56, 55],
-            backgroundColor: ['#FFC0CB', '#ADD8E6', '#90EE90', '#FFFFE0', '#F08080', '#6495ED'],            
-            borderColor: 'rgba(0, 123, 255, 1)',
-            borderWidth: 1
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',  // Red
+                'rgba(54, 162, 235, 0.6)',  // Blue
+                'rgba(255, 206, 86, 0.6)',  // Yellow
+                'rgba(75, 192, 192, 0.6)',  // Green
+                'rgba(153, 102, 255, 0.6)', // Purple
+                'rgba(255, 159, 64, 0.6)'   // Orange
+            ],            
+            borderColor: 'rgba(0, 123, 255, 3)',
+            borderWidth: 2
         }]
     },
     options: {
