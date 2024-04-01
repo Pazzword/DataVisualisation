@@ -1,0 +1,74 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<div class="d-flex">
+    {% include "layouts/sidebar.html" %}
+    <div class="w-100">
+        {% include "layouts/header.html" %}
+        <div class="my-3 px-3">
+            <h1>Dashboard</h1>
+            <div class="d-flex">
+                <!-- Card 1 -->
+                <div class="col-3 card mx-">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Total Views</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">All Platforms</h6>
+                        <div>
+                            <canvas id="total-views-chart"></canvas>
+                        </div>
+                        <h1 class="card-text text-end">8,942,000</h1>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-3 card mx-">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Total Revenue</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Revenue</h6>
+                        <div>
+                            <canvas id="revenue-chart"></canvas>
+                        </div>
+                        <h1 class="card-text text-end">£742,900</h1>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-3 card mx-">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Growth Rate </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Growth</h6>
+                        <div>
+                            <canvas id="growth-chart"></canvas>
+                        </div>
+                        <h1 class="card-text text-end text-success">24%</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- Subscribers Count-->
+            <div class="mx-3 my-5">
+                <h3 class="text-centre">Subscribers Count</h3>
+                <div class="bg-secondary bg-opacity-25 px-5 py-3 rounded">
+                    <canvas id="subscribers-count"></canvas>
+                </div>
+            </div>
+            <!-- Polar Chart -->
+            <div class="d-flex">
+                <div class="col-lg-3">
+                    <div class="card mx-3 p-3">
+                        <h6 class="text-centre">Traffic Sources</h6>
+                        <canvas id="traffic-sources"></canvas>
+                    </div>
+                    <!-- Datable -->
+                </div>
+                <div class="col-lg-9">
+                    <h3 class="d-flex justify-content-center align-items-center flex-column">Product Overview</h3>
+                    <table id="datatable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static '/assets/js/index.js' %}"></script>
+{% endblock content %}
+
+{% block scripts %}
+
+{% endblock scripts %}
