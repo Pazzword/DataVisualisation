@@ -6,5 +6,5 @@ def index(request):
     return render(request, "dashboard.html")
 
 
-def report(request):
+def reports(request):
     return render(request, "reports.html")
