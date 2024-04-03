@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% extends "layouts/base.html" %}
+{% load static %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -16,10 +17,10 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables-classic@latest/dist/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables-classic@latest" type="text/javascript"></script>
 </head>
-
+{% block content %}
   <body>
-    <h1>Analitical Dashboard</h1>
-    <div class="col-md-6">
+    <h1 style="padding: 1%;">Analitical Dashboard</h1>
+    <div class="col-md-6" style="padding: 1%;">
         <canvas id="myChart"></canvas>
     </div>
   </body>
@@ -64,5 +65,7 @@
 });
 
 </script>
-
+{% endblock content %}
+{% block script %}
+{% endblock script %}
 </html>
