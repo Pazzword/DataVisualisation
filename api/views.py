@@ -17,6 +17,12 @@ def total_views(request):
     return JsonResponse(dict)
 
 
+# Datatables
+def datatable_api(request):
+    return JsonResponse({})
+
+
+#
 def sub_views(request):
     return JsonResponse(
         {
@@ -26,6 +32,7 @@ def sub_views(request):
     )
 
 
+#
 def revenue_views(request):
     return JsonResponse(
         {

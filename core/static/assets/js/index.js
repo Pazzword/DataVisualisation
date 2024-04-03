@@ -153,6 +153,12 @@ const dataTable = new simpleDatatables.DataTable("#datatable", {
         headings: ['Movie Title', 'Director', 'Box Office Revenue', 'Release Date'],
     }
 });
+
+fetch('/api/dashboard-api')
+    .then(response => response.json())
+    .then(data => {
+        dataTable.rows().add(data.data);
+    });
 dataTable.rows().add([//Populated myself in real life scenario this would be fetched from a database
     ['The Lawnmower Man', 'Brett Leonard', '£32.1 million', 'March 6, 1992'],
     ['Inception', 'Christopher Nolan', '£836.8 million', 'July 16, 2010'],
