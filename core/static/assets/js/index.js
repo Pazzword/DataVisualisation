@@ -3,7 +3,7 @@ const revenueChart = document.getElementById('revenue-chart');
 const growthChart = document.getElementById('growth-chart');
 const subscriberCountChart = document.getElementById('subscribers-count');
 const trafficSources = document.getElementById('traffic-sources');
-growthRate = document.getElementById('growth-rate');
+
 
 
 // Total Views Polar Chart//
@@ -66,30 +66,26 @@ fetch('/api/revenue-views')
     });
 
 
-// Revenue Radar Chart//
-fetch('/api/growth-rate')
-    .then(response => response.json())
-    .then(data => {
-        new Chart(growthRate, {
-            type: 'doughnut',
-            data: {
-                labels: ['January', 'February', 'March'],
-                datasets: [{
-                    label: data.labels,
-                    data: data.data,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+// Growth Doughnut Chart//
+new Chart(growthChart, {
+    type: 'doughnut',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+            label: 'Growth Revenue',
+            data: [65, 59, 80, 81, 56, 55],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
             }
-        });
+        }
+    }
+});
 
-    });
 
 
 // Subscribers Count Line Chart//
