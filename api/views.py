@@ -40,13 +40,3 @@ def revenue_views(request):
             "data": [randint(1, 60000) for _ in range(7)],
         }
     )
-
-
-# Growth rate Doughnut chart
-def growth_rate(request):
-    return JsonResponse(
-        {
-            "labels": ["January", "February", "March", "April", "May", "June", "July"],
-            "data": [randint(1, 60000) for _ in range(7)],
-        }
-    )
