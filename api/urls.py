@@ -5,6 +5,5 @@ urlpatterns = [
     path("total-views", views.total_views, name="api-total-views"),
     path("sub-views", views.sub_views, name="api-sub-views"),
     path("revenue-views", views.revenue_views, name="api-revenue-views"),
-    path("growth-rate", views.growth_rate, name="api-growth-rate"),
     path("datatable-api", views.datatable_api, name="api-datatable-api"),
 ]
